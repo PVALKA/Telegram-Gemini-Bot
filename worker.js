@@ -169,17 +169,19 @@ export default {
       const isBotAdded = newMembers.some(m => m.id === botId);
       if (isBotAdded) {
         const chatId = payload.message.chat.id;
-        const chatTitle = payload.message.chat.title || "گروه ناشناس";
-        config.groups[chatId] = { title: chatTitle, active: false };
-        await saveConfig(env, config);
-        const text = `🚨 ربات به گروه جدیدی اضافه شد!\nنام گروه: ${chatTitle}\nآیا اجازه فعالیت می‌دهید؟`;
-        const kb = {
-          inline_keyboard: [
-            [{ text: "✅ تایید و فعالسازی", callback_data: `grptgl_${chatId}` }],
-            [{ text: "❌ مسدود ماندن", callback_data: "panel_groups" }]
-          ]
-        };
-        await sendMessage(env.BOT_TOKEN, adminId, text, kb);
+        if (!config.groups[chatId]) {
+          const chatTitle = payload.message.chat.title || "گروه ناشناس";
+          config.groups[chatId] = { title: chatTitle, active: false };
+          await saveConfig(env, config);
+          const text = `🚨 ربات به گروه جدیدی اضافه شد!\nنام گروه: ${chatTitle}\nآیا اجازه فعالیت می‌دهید؟`;
+          const kb = {
+            inline_keyboard: [
+              [{ text: "✅ تایید و فعالسازی", callback_data: `grptgl_${chatId}` }],
+              [{ text: "❌ مسدود ماندن", callback_data: "panel_groups" }]
+            ]
+          };
+          await sendMessage(env.BOT_TOKEN, adminId, text, kb);
+        }
       }
       return new Response("OK");
     }
