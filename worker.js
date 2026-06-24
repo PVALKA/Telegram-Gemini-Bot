@@ -1,9 +1,3 @@
-const telegramReactions = ["👍", "❤️", "🔥", "🥰", "👏", "😁", "🤔", "🤯", "😱", "🎉", "🤩", "🙏", "👌", "🕊", "😍", "💯", "⚡", "🏆"];
-
-function getRandomReaction() {
-  return telegramReactions[Math.floor(Math.random() * telegramReactions.length)];
-}
-
 const defaultState = {
   name: "باب",
   mood: "دوستانه و معمولی",
