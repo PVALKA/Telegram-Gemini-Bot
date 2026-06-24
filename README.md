@@ -34,5 +34,5 @@
 4. روی دکمه **Edit Code** کلیک کنید، کدهای پیش‌فرض را پاک کرده، کدهای این ریپازیتوری (فایل `worker.js`) را جایگذاری کنید و دکمه **Deploy** را بزنید.
 5. **تنظیم وب‌هوک:** آدرس Worker خود را همراه با توکن ربات در لینک زیر جایگذاری کرده و آن را در مرورگر باز کنید تا تلگرام پیام‌ها را به سرور شما بفرستد:
 
-   ```text
-   [https://api.telegram.org/bot](https://api.telegram.org/bot)<YOUR_BOT_TOKEN>/setWebhook?url=<YOUR_WORKER_URL>
+   ```text[
+https://api.telegram.org/bot/setWebhook?url=
